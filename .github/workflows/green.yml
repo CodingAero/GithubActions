@@ -2,8 +2,8 @@ name: Daily Commit
 
 on:
   schedule:
-    # - cron: '0 0 * * *'  # Every day at midnight UTC
-    - cron: '*/1 * * * *'  # Runs every 7-8 min
+    - cron: '0 0 * * *'  # Every day at midnight UTC
+    # - cron: '*/1 * * * *'  # Runs every 7-8 min
 
 jobs:
   commit:
