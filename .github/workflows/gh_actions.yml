@@ -18,8 +18,7 @@ jobs:
       run: |
         FILE="test_actions.md"
         if [ ! -f "$FILE" ]; then
-          echo "Below is a Rolling Count to test Github Actions:" > "$FILE"
-          echo
+          echo "Below is a Rolling Count to test Github Actions:<br />" > "$FILE"
           echo "Rolling Count: 1" >> "$FILE"
         else
           CURRENT_COUNT=$(grep -oP 'Rolling Count: \K\d+' "$FILE")
