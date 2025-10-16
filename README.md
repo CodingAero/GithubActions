@@ -23,3 +23,6 @@ The first step uses the standard `actions/checkout@v2` action to prepare the run
 #### Creating and Updating a File
 
 This step executes a Bash script to manage the `test_actions.md` file and push the updated count. The script first checks if the file exists; if it doesn't, it's created with an initial rolling count of 1. If the file is found, the script uses `grep` to extract the current rolling count, increments that number by one, and uses `sed` to update the file with the new count. Finally, it configures Git user credentials, stages the modified file, creates a new commit with the message "Incremental test of Github Actions", and pushes the change back to the repository using the secured `GITHUB_TOKEN` for authentication.
+
+#### Permissions
+Github Actions will need permission to commit to your repository. This can be configured in `Settings` > `Actions` > `General`. Under `Workflow permissions`, check the read and write permissions option.
