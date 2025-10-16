@@ -18,7 +18,7 @@ jobs:
       run: |
         FILE="test_actions.md"
         if [ ! -f "$FILE" ]; then
-          echo "Creating a file" > "$FILE"
+          echo "Below is a rolling count to test Github Actions:\n" > "$FILE"
           echo "commit number: 1" >> "$FILE"
         else
           CURRENT_COUNT=$(grep -oP 'commit number: \K\d+' "$FILE")
