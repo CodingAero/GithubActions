@@ -1,9 +1,8 @@
-name: Daily Commit
+name: Test Github Actions
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Every day at midnight UTC
-    # - cron: '*/1 * * * *'  # Runs every 7-8 min
+    - cron: '0 * * * *'
 
 jobs:
   commit:
@@ -15,9 +14,9 @@ jobs:
       with:
         ref: main
 
-    - name: Create file and commit
+    - name: Create file and update
       run: |
-        FILE="commit_number.md"
+        FILE="test_actions.md"
         if [ ! -f "$FILE" ]; then
           echo "Creating a file" > "$FILE"
           echo "commit number: 1" >> "$FILE"
@@ -33,6 +32,6 @@ jobs:
         git config --global user.email "smithaero12@gmail.com"
         git add "$FILE"
         git commit -m "Keeping this repo updated"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/CodingAero/ProjectGreen.git
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/CodingAero/GithubActions.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
