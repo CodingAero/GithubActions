@@ -2,7 +2,7 @@ name: Test Github Actions
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   commit:
@@ -18,20 +18,21 @@ jobs:
       run: |
         FILE="test_actions.md"
         if [ ! -f "$FILE" ]; then
-          echo "Below is a rolling count to test Github Actions:\n" > "$FILE"
-          echo "commit number: 1" >> "$FILE"
+          echo "Below is a Rolling Count to test Github Actions:" > "$FILE"
+          echo
+          echo "Rolling Count: 1" >> "$FILE"
         else
-          CURRENT_COUNT=$(grep -oP 'commit number: \K\d+' "$FILE")
+          CURRENT_COUNT=$(grep -oP 'Rolling Count: \K\d+' "$FILE")
           if [ -z "$CURRENT_COUNT" ]; then
             CURRENT_COUNT=0
           fi
           NEXT_COUNT=$((CURRENT_COUNT + 1))
-          sed -i "/commit number: /c\commit number: $NEXT_COUNT" "$FILE"
+          sed -i "/Rolling Count: /c\Rolling Count: $NEXT_COUNT" "$FILE"
         fi
         git config --global user.name "CodingAero"
         git config --global user.email "smithaero12@gmail.com"
         git add "$FILE"
-        git commit -m "Keeping this repo updated"
+        git commit -m "Incremental test of Github Actions"
         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/CodingAero/GithubActions.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
