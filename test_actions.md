@@ -1,2 +1,2 @@
 Below is a Rolling Count to test Github Actions:<br />
-Rolling Count: 6
+Rolling Count: 7
